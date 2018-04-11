@@ -1,0 +1,25 @@
+﻿<catel:UserControl x:Class="ExampleApp.Views.FamilyView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://schemas.catelproject.com"
+                   xmlns:views="clr-namespace:ExampleApp.Views">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Content="{Binding Family.Name}" />
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Members}" Margin="16,0,0,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- Note this has a binding context of *Person*, which will be injected into the person view model -->
+                    <views:PersonView DataContext="{Binding }" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+    
+</catel:UserControl>
